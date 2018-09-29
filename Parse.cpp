@@ -3,7 +3,7 @@
 #include <fstream>
 #include <array>
 #include <exception>
-#include <jon/jstring.h>
+#include "jstring.h"
 #include "Classes.h"
 #include "Parse.h"
 //#include <boost/algorithm/string/replace.hpp>

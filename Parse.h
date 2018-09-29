@@ -6,7 +6,7 @@
 #include <string>
 #include <array>
 #include "Classes.h"
-#include <jsoncpp/json/json.h>
+#include "jsoncpp/json/json.h"
 
 extern const std::vector<std::string> schoolNames;
 

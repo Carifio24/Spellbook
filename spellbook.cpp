@@ -7,7 +7,7 @@
 #include "Parse.h"
 #include "Sort.h"
 #include "Filter.h"
-#include <jsoncpp/json/json.h>
+#include "jsoncpp/json/json.h"
 
 Spellbook::Spellbook(QWidget *parent) :
     QMainWindow(parent),
