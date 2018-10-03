@@ -35,6 +35,8 @@ private slots:
 
     void on_spellList_activated(const QModelIndex &index);
 
+    void on_spellList_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
+
 private:
     Ui::Spellbook *ui;
     std::vector<Spell> spells;

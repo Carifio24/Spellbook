@@ -10,36 +10,36 @@
 #define UI_SPELLBOOK_H
 
 //For MXE
-#include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QComboBox>
-#include <QtGui/QHeaderView>
-#include <QtGui/QLabel>
-#include <QtGui/QMainWindow>
-#include <QtGui/QMenuBar>
-#include <QtGui/QScrollArea>
-#include <QtGui/QStatusBar>
-#include <QtGui/QTableWidget>
-#include <QtGui/QToolBar>
-#include <QtGui/QWidget>
+//#include <QtCore/QVariant>
+//#include <QtGui/QAction>
+//#include <QtGui/QApplication>
+//#include <QtGui/QButtonGroup>
+//#include <QtGui/QComboBox>
+//#include <QtGui/QHeaderView>
+//#include <QtGui/QLabel>
+//#include <QtGui/QMainWindow>
+//#include <QtGui/QMenuBar>
+//#include <QtGui/QScrollArea>
+//#include <QtGui/QStatusBar>
+//#include <QtGui/QTableWidget>
+//#include <QtGui/QToolBar>
+//#include <QtGui/QWidget>
 
 // For local version
-//#include <QtCore/QVariant>
-//#include <QtWidgets/QAction>
-//#include <QtWidgets/QApplication>
-//#include <QtWidgets/QButtonGroup>
-//#include <QtWidgets/QComboBox>
-//#include <QtWidgets/QHeaderView>
-//#include <QtWidgets/QLabel>
-//#include <QtWidgets/QMainWindow>
-//#include <QtWidgets/QMenuBar>
-//#include <QtWidgets/QScrollArea>
-//#include <QtWidgets/QStatusBar>
-//#include <QtWidgets/QTableWidget>
-//#include <QtWidgets/QToolBar>
-//#include <QtWidgets/QWidget>
+#include <QtCore/QVariant>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
+#include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QScrollArea>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QToolBar>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 

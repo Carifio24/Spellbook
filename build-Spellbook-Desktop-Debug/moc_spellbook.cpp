@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Spellbook_t {
-    QByteArrayData data[14];
-    char stringdata0[247];
+    QByteArrayData data[19];
+    char stringdata0[331];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,7 +42,12 @@ QT_MOC_LITERAL(9, 138, 6), // "column"
 QT_MOC_LITERAL(10, 145, 24), // "on_spellList_cellEntered"
 QT_MOC_LITERAL(11, 170, 32), // "on_filterBox_currentIndexChanged"
 QT_MOC_LITERAL(12, 203, 20), // "on_spellList_entered"
-QT_MOC_LITERAL(13, 224, 22) // "on_spellList_activated"
+QT_MOC_LITERAL(13, 224, 22), // "on_spellList_activated"
+QT_MOC_LITERAL(14, 247, 31), // "on_spellList_currentCellChanged"
+QT_MOC_LITERAL(15, 279, 10), // "currentRow"
+QT_MOC_LITERAL(16, 290, 13), // "currentColumn"
+QT_MOC_LITERAL(17, 304, 11), // "previousRow"
+QT_MOC_LITERAL(18, 316, 14) // "previousColumn"
 
     },
     "Spellbook\0on_spellList_clicked\0\0index\0"
@@ -51,7 +56,10 @@ QT_MOC_LITERAL(13, 224, 22) // "on_spellList_activated"
     "on_spellList_cellActivated\0row\0column\0"
     "on_spellList_cellEntered\0"
     "on_filterBox_currentIndexChanged\0"
-    "on_spellList_entered\0on_spellList_activated"
+    "on_spellList_entered\0on_spellList_activated\0"
+    "on_spellList_currentCellChanged\0"
+    "currentRow\0currentColumn\0previousRow\0"
+    "previousColumn"
 };
 #undef QT_MOC_LITERAL
 
@@ -61,7 +69,7 @@ static const uint qt_meta_data_Spellbook[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -69,14 +77,15 @@ static const uint qt_meta_data_Spellbook[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   54,    2, 0x08 /* Private */,
-       4,    1,   57,    2, 0x08 /* Private */,
-       6,    1,   60,    2, 0x08 /* Private */,
-       7,    2,   63,    2, 0x08 /* Private */,
-      10,    2,   68,    2, 0x08 /* Private */,
-      11,    1,   73,    2, 0x08 /* Private */,
-      12,    1,   76,    2, 0x08 /* Private */,
-      13,    1,   79,    2, 0x08 /* Private */,
+       1,    1,   59,    2, 0x08 /* Private */,
+       4,    1,   62,    2, 0x08 /* Private */,
+       6,    1,   65,    2, 0x08 /* Private */,
+       7,    2,   68,    2, 0x08 /* Private */,
+      10,    2,   73,    2, 0x08 /* Private */,
+      11,    1,   78,    2, 0x08 /* Private */,
+      12,    1,   81,    2, 0x08 /* Private */,
+      13,    1,   84,    2, 0x08 /* Private */,
+      14,    4,   87,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QModelIndex,    3,
@@ -87,6 +96,7 @@ static const uint qt_meta_data_Spellbook[] = {
     QMetaType::Void, QMetaType::Int,    3,
     QMetaType::Void, QMetaType::QModelIndex,    3,
     QMetaType::Void, QMetaType::QModelIndex,    3,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   15,   16,   17,   18,
 
        0        // eod
 };
@@ -105,6 +115,7 @@ void Spellbook::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 5: _t->on_filterBox_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 6: _t->on_spellList_entered((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 7: _t->on_spellList_activated((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 8: _t->on_spellList_currentCellChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
         default: ;
         }
     }
@@ -135,13 +146,13 @@ int Spellbook::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

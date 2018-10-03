@@ -22,7 +22,7 @@ static const uint qt_meta_data_Spellbook[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -38,6 +38,7 @@ static const uint qt_meta_data_Spellbook[] = {
      219,   11,   10,   10, 0x08,
      257,   11,   10,   10, 0x08,
      291,   11,   10,   10, 0x08,
+     379,  327,   10,   10, 0x08,
 
        0        // eod
 };
@@ -51,6 +52,8 @@ static const char qt_meta_stringdata_Spellbook[] = {
     "on_filterBox_currentIndexChanged(int)\0"
     "on_spellList_entered(QModelIndex)\0"
     "on_spellList_activated(QModelIndex)\0"
+    "currentRow,currentColumn,previousRow,previousColumn\0"
+    "on_spellList_currentCellChanged(int,int,int,int)\0"
 };
 
 void Spellbook::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -67,6 +70,7 @@ void Spellbook::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 5: _t->on_filterBox_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 6: _t->on_spellList_entered((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 7: _t->on_spellList_activated((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 8: _t->on_spellList_currentCellChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
         default: ;
         }
     }
@@ -104,9 +108,9 @@ int Spellbook::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

@@ -330,3 +330,8 @@ void Spellbook::on_filterBox_currentIndexChanged(int index)
         }
     }
 }
+
+void Spellbook::on_spellList_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn)
+{
+    display_spelldata(currentRow);
+}
