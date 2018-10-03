@@ -9,4 +9,4 @@ If you try to build this yourself, the easiest way is probably to install QtCrea
 ### Things to improve
 * Make spell text copyable
 * Make spell fields non-editable
-* Add scrolling with arrow keys
+* ~~Add scrolling with arrow keys~~ Done!
