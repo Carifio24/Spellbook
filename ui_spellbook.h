@@ -9,7 +9,7 @@
 #ifndef UI_SPELLBOOK_H
 #define UI_SPELLBOOK_H
 
-//For MXE
+//For MXE with Qt4
 //#include <QtCore/QVariant>
 //#include <QtGui/QAction>
 //#include <QtGui/QApplication>
@@ -25,7 +25,7 @@
 //#include <QtGui/QToolBar>
 //#include <QtGui/QWidget>
 
-// For local version
+// For Linux/MXE with Qt5
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>

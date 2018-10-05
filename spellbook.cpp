@@ -86,6 +86,25 @@ Spellbook::Spellbook(QWidget *parent) :
     ui->sort2Label->setStyleSheet(fontstyle);
     ui->filterLabel->setStyleSheet(fontstyle);
 
+    // Make the table view not editable
+    ui->spellList->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+    // Make the labels selectable
+    ui->nameLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->schoolLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->ritualLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->concentrationLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->levelLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->rangeLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->descriptionTitle->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->descriptionLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->durationLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->componentsLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->castingTimeLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->pageLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->materialLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    ui->classesLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+
 }
 
 Spellbook::~Spellbook()
