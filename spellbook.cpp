@@ -258,8 +258,8 @@ void Spellbook::sort(const std::string& sort_field1, const std::string& sort_fie
     }
 
     // Clear the QListWidget and repopulate with the sorted list
-    ui->spellList->clearContents();
     for (int i = 0; i < spells.size(); i++) {
+        //std::cout << i << std::endl;
         ui->spellList->setItem(i,0,new QTableWidgetItem(QString::fromStdString(spells[i].name)));
         ui->spellList->setItem(i,1,new QTableWidgetItem(QString::fromStdString(schoolNames[static_cast<int>(spells[i].school)])));
         ui->spellList->setItem(i,2,new QTableWidgetItem(QString::number(spells[i].level)));

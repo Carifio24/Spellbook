@@ -18,7 +18,11 @@ class MemValComp {
 			member_name = mem_name;
 		}
 		bool doCompare(const Spell& s1, const Spell& s2) {
-			return s1.*member_name < s2.*member_name;
+            if (s1.*member_name != s2.*member_name) {
+                return s1.*member_name < s2.*member_name;
+            } else {
+                return s1.name < s2.name;
+            }
 		}
 
 		void doSort(std::vector<Spell>& slist) {
@@ -43,8 +47,10 @@ class MemValTwoComp {
         bool doCompare(const Spell& s1, const Spell& s2) {
             if (s1.*member_name1 != s2.*member_name1) {
                 return s1.*member_name1 < s2.*member_name1;
-            } else {
+            } else if (s1.*member_name2 != s2.*member_name2) {
                 return s1.*member_name2 < s2.*member_name2;
+            } else {
+                return s1.name < s2.name;
             }
         }
 

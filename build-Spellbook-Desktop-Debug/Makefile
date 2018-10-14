@@ -105,6 +105,7 @@ DIST          = ../Spells.json \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		../../.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf \
@@ -207,6 +208,7 @@ Makefile: ../Spellbook.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qm
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf \
+		../.qmake.stash \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf \
@@ -269,6 +271,7 @@ Makefile: ../Spellbook.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qm
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.conf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_post.prf:
+../.qmake.stash:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exclusive_builds.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf:
@@ -368,7 +371,8 @@ spellbook.o: ../spellbook.cpp ../spellbook.h \
 		../Filter.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o spellbook.o ../spellbook.cpp
 
-Parse.o: ../Parse.cpp ../Classes.h \
+Parse.o: ../Parse.cpp ../jstring.h \
+		../Classes.h \
 		../Parse.h \
 		../jsoncpp/json/json.h \
 		../Parse.tpp
@@ -382,7 +386,7 @@ Sort.o: ../Sort.cpp ../Classes.h \
 		../Sort.tpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Sort.o ../Sort.cpp
 
-jstring.o: ../jstring.cpp 
+jstring.o: ../jstring.cpp ../jstring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o jstring.o ../jstring.cpp
 
 jsoncpp.o: ../jsoncpp/jsoncpp.cpp ../jsoncpp/json/json.h
