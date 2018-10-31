@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = Spellbook1.0.0
-DISTDIR = /home/jon/git/Spellbook/build-Spellbook-Desktop-Debug/.tmp/Spellbook1.0.0
+DISTDIR = /media/carifio24/E0F86EC1F86E9616/git/Spellbook/build-Spellbook-Desktop-Debug/.tmp/Spellbook1.0.0
 LINK          = g++
 LFLAGS        = -m64
 LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -54,7 +54,8 @@ SOURCES       = ../main.cpp \
 		../Filter.cpp \
 		../Sort.cpp \
 		../jstring.cpp \
-		../jsoncpp/jsoncpp.cpp moc_spellbook.cpp
+		../jsoncpp/jsoncpp.cpp qrc_resources.cpp \
+		moc_spellbook.cpp
 OBJECTS       = main.o \
 		spellbook.o \
 		Parse.o \
@@ -62,8 +63,13 @@ OBJECTS       = main.o \
 		Sort.o \
 		jstring.o \
 		jsoncpp.o \
+		qrc_resources.o \
 		moc_spellbook.o
-DIST          = ../Spells.json \
+DIST          = ../BookBackground.jpeg \
+		../Spells.json \
+		../star_filled.png \
+		../star_filled_2.png \
+		../star_empty.png \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
@@ -127,7 +133,6 @@ DIST          = ../Spells.json \
 		../Parse.h \
 		../Filter.h \
 		../Classes.h \
-		../ui_spellbook.h \
 		../jsoncpp/json/json.h \
 		../jsoncpp/json/json-forwards.h \
 		../jstring.h ../main.cpp \
@@ -226,6 +231,7 @@ Makefile: ../Spellbook.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qm
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
 		../Spellbook.pro \
+		../resources.qrc \
 		/usr/lib/x86_64-linux-gnu/libQt5Widgets.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Gui.prl \
 		/usr/lib/x86_64-linux-gnu/libQt5Core.prl
@@ -289,6 +295,7 @@ Makefile: ../Spellbook.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qm
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf:
 ../Spellbook.pro:
+../resources.qrc:
 /usr/lib/x86_64-linux-gnu/libQt5Widgets.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Gui.prl:
 /usr/lib/x86_64-linux-gnu/libQt5Core.prl:
@@ -306,7 +313,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../spellbook.h ../Sort.h ../Parse.h ../Filter.h ../Classes.h ../ui_spellbook.h ../jsoncpp/json/json.h ../jsoncpp/json/json-forwards.h ../jstring.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../resources.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents ../spellbook.h ../Sort.h ../Parse.h ../Filter.h ../Classes.h ../jsoncpp/json/json.h ../jsoncpp/json/json-forwards.h ../jstring.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../main.cpp ../spellbook.cpp ../Parse.cpp ../Filter.cpp ../Sort.cpp ../jstring.cpp ../jsoncpp/jsoncpp.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../spellbook.ui $(DISTDIR)/
 
@@ -329,14 +337,23 @@ mocables: compiler_moc_header_make_all compiler_moc_source_make_all
 
 check: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_resources.cpp
+qrc_resources.cpp: ../resources.qrc \
+		../resources/star_filled.png \
+		../resources/star_filled_2.png \
+		../resources/BookBackground.jpeg \
+		../resources/Spells.json \
+		../resources/star_empty.png
+	/usr/lib/x86_64-linux-gnu/qt5/bin/rcc -name resources ../resources.qrc -o qrc_resources.cpp
+
 compiler_moc_header_make_all: moc_spellbook.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_spellbook.cpp
 moc_spellbook.cpp: ../Classes.h \
 		../spellbook.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/jon/git/Spellbook -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../spellbook.h -o moc_spellbook.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/media/carifio24/E0F86EC1F86E9616/git/Spellbook -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../spellbook.h -o moc_spellbook.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -352,7 +369,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -362,7 +379,7 @@ main.o: ../main.cpp ../spellbook.h \
 
 spellbook.o: ../spellbook.cpp ../spellbook.h \
 		../Classes.h \
-		../ui_spellbook.h \
+		ui_spellbook.h \
 		../Parse.h \
 		../jsoncpp/json/json.h \
 		../Parse.tpp \
@@ -391,6 +408,9 @@ jstring.o: ../jstring.cpp ../jstring.h
 
 jsoncpp.o: ../jsoncpp/jsoncpp.cpp ../jsoncpp/json/json.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o jsoncpp.o ../jsoncpp/jsoncpp.cpp
+
+qrc_resources.o: qrc_resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
 
 moc_spellbook.o: moc_spellbook.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_spellbook.o moc_spellbook.cpp

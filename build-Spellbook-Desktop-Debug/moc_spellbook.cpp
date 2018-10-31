@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Spellbook_t {
-    QByteArrayData data[19];
-    char stringdata0[331];
+    QByteArrayData data[22];
+    char stringdata0[407];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -47,7 +47,10 @@ QT_MOC_LITERAL(14, 247, 31), // "on_spellList_currentCellChanged"
 QT_MOC_LITERAL(15, 279, 10), // "currentRow"
 QT_MOC_LITERAL(16, 290, 13), // "currentColumn"
 QT_MOC_LITERAL(17, 304, 11), // "previousRow"
-QT_MOC_LITERAL(18, 316, 14) // "previousColumn"
+QT_MOC_LITERAL(18, 316, 14), // "previousColumn"
+QT_MOC_LITERAL(19, 331, 26), // "on_favoritesButton_clicked"
+QT_MOC_LITERAL(20, 358, 27), // "on_favoritesButton_released"
+QT_MOC_LITERAL(21, 386, 20) // "on_favButton_clicked"
 
     },
     "Spellbook\0on_spellList_clicked\0\0index\0"
@@ -59,7 +62,9 @@ QT_MOC_LITERAL(18, 316, 14) // "previousColumn"
     "on_spellList_entered\0on_spellList_activated\0"
     "on_spellList_currentCellChanged\0"
     "currentRow\0currentColumn\0previousRow\0"
-    "previousColumn"
+    "previousColumn\0on_favoritesButton_clicked\0"
+    "on_favoritesButton_released\0"
+    "on_favButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -69,7 +74,7 @@ static const uint qt_meta_data_Spellbook[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -77,15 +82,18 @@ static const uint qt_meta_data_Spellbook[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   59,    2, 0x08 /* Private */,
-       4,    1,   62,    2, 0x08 /* Private */,
-       6,    1,   65,    2, 0x08 /* Private */,
-       7,    2,   68,    2, 0x08 /* Private */,
-      10,    2,   73,    2, 0x08 /* Private */,
-      11,    1,   78,    2, 0x08 /* Private */,
-      12,    1,   81,    2, 0x08 /* Private */,
-      13,    1,   84,    2, 0x08 /* Private */,
-      14,    4,   87,    2, 0x08 /* Private */,
+       1,    1,   74,    2, 0x08 /* Private */,
+       4,    1,   77,    2, 0x08 /* Private */,
+       6,    1,   80,    2, 0x08 /* Private */,
+       7,    2,   83,    2, 0x08 /* Private */,
+      10,    2,   88,    2, 0x08 /* Private */,
+      11,    1,   93,    2, 0x08 /* Private */,
+      12,    1,   96,    2, 0x08 /* Private */,
+      13,    1,   99,    2, 0x08 /* Private */,
+      14,    4,  102,    2, 0x08 /* Private */,
+      19,    0,  111,    2, 0x08 /* Private */,
+      20,    0,  112,    2, 0x08 /* Private */,
+      21,    0,  113,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QModelIndex,    3,
@@ -97,6 +105,9 @@ static const uint qt_meta_data_Spellbook[] = {
     QMetaType::Void, QMetaType::QModelIndex,    3,
     QMetaType::Void, QMetaType::QModelIndex,    3,
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   15,   16,   17,   18,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -116,6 +127,9 @@ void Spellbook::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 6: _t->on_spellList_entered((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 7: _t->on_spellList_activated((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 8: _t->on_spellList_currentCellChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
+        case 9: _t->on_favoritesButton_clicked(); break;
+        case 10: _t->on_favoritesButton_released(); break;
+        case 11: _t->on_favButton_clicked(); break;
         default: ;
         }
     }
@@ -146,13 +160,13 @@ int Spellbook::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 12;
     }
     return _id;
 }

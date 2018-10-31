@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QModelIndex>
+#include <QPixmap>
+#include <QIcon>
 #include "Classes.h"
 
 namespace Ui {
@@ -37,11 +39,40 @@ private slots:
 
     void on_spellList_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn);
 
+    void on_favoritesButton_clicked();
+
+    void on_favoritesButton_released();
+
+    void on_favButton_clicked();
+
 private:
+
+    void filter_by_class(const CasterClass& cc);
+
+    void filter_favorites();
+
+    void filter_with_favorites(const CasterClass& cc);
+
+    void filter();
+
+    void save_favorites();
+
+    void load_favorites();
+
+    void unfilter();
+
+    void update_button();
+
     Ui::Spellbook *ui;
     std::vector<Spell> spells;
     void sort(const std::string& sort_field1, const std::string& sort_field2);
     void display_spelldata(const int& ind);
+    std::string favorites_file = "Favorites.txt";
+    QPixmap star_empty;
+    QPixmap star_filled;
+    QIcon fav_icon;
+    QIcon not_fav_icon;
+    int iconSize = 55;
 };
 
 #endif // SPELLBOOK_H

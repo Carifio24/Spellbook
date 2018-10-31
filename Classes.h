@@ -31,6 +31,7 @@ struct Spell {
 	bool concentration;
 	std::string castingTime;
 	int level;
+    bool favorite;
 	School school;
 	std::vector<CasterClass> classes;
 	std::vector<Subclass> subclasses;

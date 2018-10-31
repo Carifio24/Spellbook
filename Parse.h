@@ -7,6 +7,7 @@
 #include <array>
 #include "Classes.h"
 #include "jsoncpp/json/json.h"
+#include <QFile>
 
 extern const std::vector<std::string> schoolNames;
 
@@ -30,7 +31,7 @@ School school_from_name(const std::string& name);
 
 Spell parse_spell(const Json::Value& root);
 
-std::vector<Spell> read_spellfile(const std::string& filename);
+std::vector<Spell> read_spellfile(QFile* qspellfile);
 
 /*template <class T>
 int get_index(const std::vector<T>& v, const T& x);

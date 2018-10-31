@@ -3,12 +3,14 @@
 #include <fstream>
 #include <array>
 #include <exception>
+#include <iostream>
 #include "jstring.h"
 #include "Classes.h"
 #include "Parse.h"
 //#include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string.hpp>
+#include <QTextStream>>
 
 const std::vector<std::string> schoolNames = {"Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"};
 
@@ -136,17 +138,23 @@ Spell parse_spell(const Json::Value& root) {
 	subclasses.shrink_to_fit();
 	spell.subclasses = subclasses;
 
+    spell.favorite = false;
+
 	return spell;
 
 }
 
-std::vector<Spell> read_spellfile(const std::string& filename) {
-	std::ifstream ifs{filename};
+std::vector<Spell> read_spellfile(QFile* qspellfile) {
+
+    std::cout << qspellfile->fileName().toStdString() << std::endl;
+    QTextStream in(qspellfile);
+    std::string data = in.readAll().toStdString();
+
 	Json::Value root;
 	Json::CharReaderBuilder builder;
 	Json::CharReader* reader = builder.newCharReader();
 	std::string errors;
-	std::string data((std::istreambuf_iterator<char>(ifs)), (std::istreambuf_iterator<char>()));
+    //std::string data((std::istreambuf_iterator<char>(ifs)), (std::istreambuf_iterator<char>()));
 	reader->parse(data.c_str(), data.c_str() + data.size(), &root, &errors);
 
 	std::vector<Spell> spells;

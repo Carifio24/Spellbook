@@ -18,6 +18,8 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableWidget>
@@ -54,6 +56,8 @@ public:
     QLabel *descriptionTitle;
     QLabel *castingTimeLabel;
     QLabel *pageLabel;
+    QRadioButton *favoritesButton;
+    QPushButton *favButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -79,7 +83,7 @@ public:
         spellList->verticalHeader()->setHighlightSections(false);
         nameLabel = new QLabel(centralWidget);
         nameLabel->setObjectName(QStringLiteral("nameLabel"));
-        nameLabel->setGeometry(QRect(499, 20, 671, 71));
+        nameLabel->setGeometry(QRect(539, 20, 591, 71));
         QFont font;
         font.setFamily(QStringLiteral("URW Chancery L"));
         font.setPointSize(30);
@@ -165,6 +169,13 @@ public:
         pageLabel = new QLabel(centralWidget);
         pageLabel->setObjectName(QStringLiteral("pageLabel"));
         pageLabel->setGeometry(QRect(990, 110, 171, 17));
+        favoritesButton = new QRadioButton(centralWidget);
+        favoritesButton->setObjectName(QStringLiteral("favoritesButton"));
+        favoritesButton->setGeometry(QRect(60, 80, 112, 23));
+        favButton = new QPushButton(centralWidget);
+        favButton->setObjectName(QStringLiteral("favButton"));
+        favButton->setGeometry(QRect(1140, 20, 71, 71));
+        favButton->setFocusPolicy(Qt::NoFocus);
         Spellbook->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Spellbook);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -203,6 +214,8 @@ public:
         descriptionTitle->setText(QString());
         castingTimeLabel->setText(QString());
         pageLabel->setText(QString());
+        favoritesButton->setText(QApplication::translate("Spellbook", "Favorites", 0));
+        favButton->setText(QString());
     } // retranslateUi
 
 };

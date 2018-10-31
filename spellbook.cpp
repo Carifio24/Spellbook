@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <fstream>
 #include "spellbook.h"
 #include "ui_spellbook.h"
 #include "Classes.h"
@@ -8,6 +9,7 @@
 #include "Sort.h"
 #include "Filter.h"
 #include "jsoncpp/json/json.h"
+#include <QFile>
 
 Spellbook::Spellbook(QWidget *parent) :
     QMainWindow(parent),
@@ -19,13 +21,14 @@ Spellbook::Spellbook(QWidget *parent) :
     setWindowTitle(QString::fromStdString("D&D 5th edition spellbook"));
 
     // Set the background image
-    QPixmap bkgnd("BookBackground.jpeg");
+    QPixmap bkgnd(":/resources/BookBackground.jpeg");
     bkgnd = bkgnd.scaled(this->size());
     QPalette palette;
     palette.setBrush(QPalette::Background, bkgnd);
     this->setPalette(palette);
     ui->descScrollArea->setStyleSheet("background-color:transparent");
     ui->spellList->setStyleSheet("background-color:transparent");
+    ui->favButton->setStyleSheet("background-color:transparent");
 
     // Set the table widget to highlight its entire row
     ui->spellList->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -41,8 +44,10 @@ Spellbook::Spellbook(QWidget *parent) :
 
     // Read and parse the spell list
     //std::string filename = "5e-SRD-Spells.json";
-    std::string filename = "Spells.json";
-    spells = read_spellfile(filename);
+    QFile qspellfile(":/resources/Spells.json");
+    qspellfile.open(QIODevice::ReadOnly);
+    spells = read_spellfile(&qspellfile);
+    qspellfile.close();
 
     // Add the spells to the QTableWidget and display them
     ui->spellList->setRowCount(spells.size());
@@ -104,6 +109,15 @@ Spellbook::Spellbook(QWidget *parent) :
     ui->pageLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
     ui->materialLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
     ui->classesLabel->setTextInteractionFlags(Qt::TextSelectableByMouse);
+
+    // Create the button pixmaps
+    star_empty = QPixmap(":/resources/star_empty.png");
+    star_filled = QPixmap(":/resources/star_filled_2.png");
+    fav_icon = QIcon(star_filled);
+    not_fav_icon = QIcon(star_empty);
+
+    // Load favorites
+    load_favorites();
 
 }
 
@@ -189,6 +203,9 @@ void Spellbook::display_spelldata(const int& ind) {
     ui->materialLabel->setText(materialText);
     ui->classesLabel->setText(classesText);
     //ui->subclassesLabel->setText(subclassesText);
+
+    // Show the favorite button image
+    update_button();
 }
 
 void Spellbook::on_spellList_clicked(const QModelIndex &index)
@@ -320,37 +337,151 @@ void Spellbook::on_spellList_cellEntered(int row, int column)
 
 void Spellbook::on_filterBox_currentIndexChanged(int index)
 {
-    // No filter
-    if (index == 0) {
-        for (int i = 0; i < ui->spellList->rowCount(); i++) {
+
+    filter();
+//    // No filter
+//    if (index == 0) {
+//        for (int i = 0; i < ui->spellList->rowCount(); i++) {
+//            ui->spellList->setRowHidden(i, false);
+//        }
+//    }
+//    // CasterClass
+//    if (index > 0 && index <= N_CASTERS) {
+//        CasterClass caster = static_cast<CasterClass>(index-1);
+//        for (int i = 0; i < ui->spellList->rowCount(); i++) {
+//            if (usableByClass(spellsList()[i], caster)) {
+//                ui->spellList->setRowHidden(i, false);
+//            } else {
+//                ui->spellList->setRowHidden(i, true);
+//            }
+//        }
+//    }
+//    // Subclass
+//    Subclass sub = static_cast<Subclass>(index - N_CASTERS - 1);
+//    if (index > N_CASTERS) {
+//        for (int i = 0; i < ui->spellList->rowCount(); i++) {
+//            if (usableBySubclass(spellsList()[i], sub)) {
+//                ui->spellList->setRowHidden(i, false);
+//            } else {
+//                ui->spellList->setRowHidden(i, true);
+//            }
+//        }
+//    }
+}
+
+void Spellbook::filter_by_class(const CasterClass& cc) {
+    for (int i = 0; i < spells.size(); i++) {
+        if (usableByClass(spells[i], cc)) {
             ui->spellList->setRowHidden(i, false);
+        } else {
+            ui->spellList->setRowHidden(i, true);
         }
     }
-    // CasterClass
-    if (index > 0 && index <= N_CASTERS) {
-        CasterClass caster = static_cast<CasterClass>(index-1);
-        for (int i = 0; i < ui->spellList->rowCount(); i++) {
-            if (usableByClass(spellsList()[i], caster)) {
-                ui->spellList->setRowHidden(i, false);
-            } else {
-                ui->spellList->setRowHidden(i, true);
-            }
+}
+
+void Spellbook::filter_with_favorites(const CasterClass& cc) {
+    for (int i = 0; i < spells.size(); i++) {
+        if (usableByClass(spells[i], cc) && spells[i].favorite) {
+            ui->spellList->setRowHidden(i, false);
+        } else {
+            ui->spellList->setRowHidden(i, true);
         }
     }
-    // Subclass
-    Subclass sub = static_cast<Subclass>(index - N_CASTERS - 1);
-    if (index > N_CASTERS) {
-        for (int i = 0; i < ui->spellList->rowCount(); i++) {
-            if (usableBySubclass(spellsList()[i], sub)) {
-                ui->spellList->setRowHidden(i, false);
-            } else {
-                ui->spellList->setRowHidden(i, true);
-            }
+}
+
+void Spellbook::filter_favorites() {
+    for (int i = 0; i < spells.size(); i++) {
+        if (spells[i].favorite) {
+            ui->spellList->setRowHidden(i, false);
+        } else {
+            ui->spellList->setRowHidden(i, true);
         }
+    }
+}
+
+void Spellbook::filter() {
+    int classIndex = ui->filterBox->currentIndex();
+    bool isClass = (classIndex != 0);
+    bool favorites = ui->favoritesButton->isChecked();
+    if (isClass && favorites) {
+        filter_with_favorites(static_cast<CasterClass>(classIndex-1));
+    } else if (isClass) {
+        filter_by_class(static_cast<CasterClass>(classIndex-1));
+    } else if (favorites) {
+        filter_favorites();
+    } else {
+        unfilter();
     }
 }
 
 void Spellbook::on_spellList_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn)
 {
     display_spelldata(currentRow);
+}
+
+void Spellbook::on_favoritesButton_clicked()
+{
+    filter();
+}
+
+void Spellbook::unfilter() {
+    for (int i = 0; i < spells.size(); i++) {
+        ui->spellList->setRowHidden(i, false);
+    }
+}
+
+void Spellbook::save_favorites() {
+    std::ofstream ofs{favorites_file};
+    for (int i = 0; i < spells.size(); i++) {
+        if (spells[i].favorite) {
+            ofs << spells[i].name << std::endl;
+        }
+    }
+}
+
+void Spellbook::load_favorites() {
+    std::string line;
+    std::ifstream ifs{favorites_file};
+    while (std::getline(ifs, line)) {
+        bool inSpellbook = false;
+        for (int i = 0; i < spells.size(); i++) {
+            if (line == spells[i].name) {
+                spells[i].favorite = true;
+                inSpellbook = true;
+                break;
+            }
+        }
+
+        if (!inSpellbook) {
+            throw std::runtime_error("Bad spell name!");
+        }
+    }
+}
+
+void Spellbook::on_favoritesButton_released()
+{
+    filter();
+}
+
+void Spellbook::update_button() {
+    int index = ui->spellList->currentRow();
+    Spell s = spells[index];
+    if (s.favorite) {
+        ui->favButton->setIcon(fav_icon);
+    } else {
+        ui->favButton->setIcon(not_fav_icon);
+    }
+    ui->favButton->setIconSize(QSize(iconSize,iconSize));
+}
+
+void Spellbook::on_favButton_clicked()
+{
+    int index = ui->spellList->currentRow();
+    spells[index].favorite = !spells[index].favorite;
+    update_button();
+    save_favorites();
+
+    if (ui->favoritesButton->isChecked()) {
+        filter();
+    }
 }

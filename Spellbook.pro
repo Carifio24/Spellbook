@@ -27,7 +27,6 @@ HEADERS  += spellbook.h \
     Parse.h \
     Filter.h \
     Classes.h \
-    ui_spellbook.h \
     jsoncpp/json/json.h \
     jsoncpp/json/json-forwards.h \
     jstring.h
@@ -37,4 +36,11 @@ FORMS    += spellbook.ui
 CONFIG    += c++11
 
 DISTFILES += \
-    Spells.json
+    BookBackground.jpeg \
+    Spells.json \
+    star_filled.png \
+    star_filled_2.png \
+    star_empty.png
+
+RESOURCES += \
+    resources.qrc
