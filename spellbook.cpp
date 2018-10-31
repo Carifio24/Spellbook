@@ -337,36 +337,7 @@ void Spellbook::on_spellList_cellEntered(int row, int column)
 
 void Spellbook::on_filterBox_currentIndexChanged(int index)
 {
-
     filter();
-//    // No filter
-//    if (index == 0) {
-//        for (int i = 0; i < ui->spellList->rowCount(); i++) {
-//            ui->spellList->setRowHidden(i, false);
-//        }
-//    }
-//    // CasterClass
-//    if (index > 0 && index <= N_CASTERS) {
-//        CasterClass caster = static_cast<CasterClass>(index-1);
-//        for (int i = 0; i < ui->spellList->rowCount(); i++) {
-//            if (usableByClass(spellsList()[i], caster)) {
-//                ui->spellList->setRowHidden(i, false);
-//            } else {
-//                ui->spellList->setRowHidden(i, true);
-//            }
-//        }
-//    }
-//    // Subclass
-//    Subclass sub = static_cast<Subclass>(index - N_CASTERS - 1);
-//    if (index > N_CASTERS) {
-//        for (int i = 0; i < ui->spellList->rowCount(); i++) {
-//            if (usableBySubclass(spellsList()[i], sub)) {
-//                ui->spellList->setRowHidden(i, false);
-//            } else {
-//                ui->spellList->setRowHidden(i, true);
-//            }
-//        }
-//    }
 }
 
 void Spellbook::filter_by_class(const CasterClass& cc) {

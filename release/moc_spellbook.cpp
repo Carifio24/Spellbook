@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'spellbook.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.11.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.11.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'spellbook.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.11.2. It"
+#error "This file was generated using the moc from 5.11.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Spellbook_t {
-    QByteArrayData data[20];
-    char stringdata0[343];
+    QByteArrayData data[23];
+    char stringdata0[419];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -50,7 +50,10 @@ QT_MOC_LITERAL(15, 259, 31), // "on_spellList_currentCellChanged"
 QT_MOC_LITERAL(16, 291, 10), // "currentRow"
 QT_MOC_LITERAL(17, 302, 13), // "currentColumn"
 QT_MOC_LITERAL(18, 316, 11), // "previousRow"
-QT_MOC_LITERAL(19, 328, 14) // "previousColumn"
+QT_MOC_LITERAL(19, 328, 14), // "previousColumn"
+QT_MOC_LITERAL(20, 343, 26), // "on_favoritesButton_clicked"
+QT_MOC_LITERAL(21, 370, 27), // "on_favoritesButton_released"
+QT_MOC_LITERAL(22, 398, 20) // "on_favButton_clicked"
 
     },
     "Spellbook\0on_spellList_clicked\0\0"
@@ -62,7 +65,9 @@ QT_MOC_LITERAL(19, 328, 14) // "previousColumn"
     "on_spellList_entered\0on_spellList_activated\0"
     "on_spellList_currentCellChanged\0"
     "currentRow\0currentColumn\0previousRow\0"
-    "previousColumn"
+    "previousColumn\0on_favoritesButton_clicked\0"
+    "on_favoritesButton_released\0"
+    "on_favButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -72,7 +77,7 @@ static const uint qt_meta_data_Spellbook[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -80,15 +85,18 @@ static const uint qt_meta_data_Spellbook[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   59,    2, 0x08 /* Private */,
-       5,    1,   62,    2, 0x08 /* Private */,
-       7,    1,   65,    2, 0x08 /* Private */,
-       8,    2,   68,    2, 0x08 /* Private */,
-      11,    2,   73,    2, 0x08 /* Private */,
-      12,    1,   78,    2, 0x08 /* Private */,
-      13,    1,   81,    2, 0x08 /* Private */,
-      14,    1,   84,    2, 0x08 /* Private */,
-      15,    4,   87,    2, 0x08 /* Private */,
+       1,    1,   74,    2, 0x08 /* Private */,
+       5,    1,   77,    2, 0x08 /* Private */,
+       7,    1,   80,    2, 0x08 /* Private */,
+       8,    2,   83,    2, 0x08 /* Private */,
+      11,    2,   88,    2, 0x08 /* Private */,
+      12,    1,   93,    2, 0x08 /* Private */,
+      13,    1,   96,    2, 0x08 /* Private */,
+      14,    1,   99,    2, 0x08 /* Private */,
+      15,    4,  102,    2, 0x08 /* Private */,
+      20,    0,  111,    2, 0x08 /* Private */,
+      21,    0,  112,    2, 0x08 /* Private */,
+      22,    0,  113,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -100,6 +108,9 @@ static const uint qt_meta_data_Spellbook[] = {
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int, QMetaType::Int,   16,   17,   18,   19,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -119,6 +130,9 @@ void Spellbook::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 6: _t->on_spellList_entered((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 7: _t->on_spellList_activated((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
         case 8: _t->on_spellList_currentCellChanged((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< int(*)>(_a[3])),(*reinterpret_cast< int(*)>(_a[4]))); break;
+        case 9: _t->on_favoritesButton_clicked(); break;
+        case 10: _t->on_favoritesButton_released(); break;
+        case 11: _t->on_favButton_clicked(); break;
         default: ;
         }
     }
@@ -149,13 +163,13 @@ int Spellbook::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 12;
     }
     return _id;
 }

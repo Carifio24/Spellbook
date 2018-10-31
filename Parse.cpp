@@ -10,7 +10,7 @@
 //#include <boost/algorithm/string/replace.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string.hpp>
-#include <QTextStream>>
+#include <QTextStream>
 
 const std::vector<std::string> schoolNames = {"Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"};
 

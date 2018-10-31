@@ -1,3 +1,4 @@
-Arcane Lock
 Animal Friendship
 Animal Shapes
+Animate Objects
+Arcane Lock

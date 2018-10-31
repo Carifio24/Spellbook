@@ -72,7 +72,7 @@ private:
     QPixmap star_filled;
     QIcon fav_icon;
     QIcon not_fav_icon;
-    int iconSize = 55;
+    int iconSize = 40;
 };
 
 #endif // SPELLBOOK_H
