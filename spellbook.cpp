@@ -9,6 +9,8 @@
 #include "Sort.h"
 #include "Filter.h"
 #include "jsoncpp/json/json.h"
+#include <boost/algorithm/string/predicate.hpp>
+#include <boost/algorithm/string/case_conv.hpp>
 #include <QFile>
 
 Spellbook::Spellbook(QWidget *parent) :
@@ -29,6 +31,8 @@ Spellbook::Spellbook(QWidget *parent) :
     ui->descScrollArea->setStyleSheet("background-color:transparent");
     ui->spellList->setStyleSheet("background-color:transparent");
     ui->favButton->setStyleSheet("background-color:transparent");
+    //ui->searchBar->setStyleSheet("background-color:rgb(231,208,166);");
+
 
     // Set the table widget to highlight its entire row
     ui->spellList->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -137,7 +141,7 @@ void Spellbook::display_spelldata(const int& ind) {
     QString levelText = "<b>Level: </b>" + QString::fromStdString(std::to_string(spell.level));
     QString rangeText = "<b>Range: </b>" + QString::fromStdString(spell.range);
     QString descTitleText = "<b>Description:</b>";
-    QString descriptionText = QString::fromStdString(spell.description);
+    QString descriptionText = QString::fromStdString(spell.description + "\n\n" + spell.higherLevel);
     QString durationText = "<b>Duration: </b>" + QString::fromStdString(spell.duration);
     QString castingTimeText = "<b>Casting Time: </b>" + QString::fromStdString(spell.castingTime);
     QString pageText = "<b>Location: </b> PHB " + QString::fromStdString(std::to_string(spell.page));
@@ -340,49 +344,76 @@ void Spellbook::on_filterBox_currentIndexChanged(int index)
     filter();
 }
 
-void Spellbook::filter_by_class(const CasterClass& cc) {
-    for (int i = 0; i < spells.size(); i++) {
-        if (usableByClass(spells[i], cc)) {
-            ui->spellList->setRowHidden(i, false);
-        } else {
-            ui->spellList->setRowHidden(i, true);
-        }
-    }
+bool Spellbook::filter_item(const bool& isClass, const bool& isFav, const bool& isText, const Spell& s, const CasterClass& cc, const std::string& text) {
+    bool toHide = false;
+    std::string spname = s.name;
+    boost::to_lower(spname);
+    toHide = toHide || (isClass && !usableByClass(s, cc));
+    toHide = toHide || (isFav && !s.favorite);
+    toHide = toHide || (isText && !boost::starts_with(spname, text));
+    return toHide;
 }
 
-void Spellbook::filter_with_favorites(const CasterClass& cc) {
-    for (int i = 0; i < spells.size(); i++) {
-        if (usableByClass(spells[i], cc) && spells[i].favorite) {
-            ui->spellList->setRowHidden(i, false);
-        } else {
-            ui->spellList->setRowHidden(i, true);
-        }
-    }
-}
 
-void Spellbook::filter_favorites() {
-    for (int i = 0; i < spells.size(); i++) {
-        if (spells[i].favorite) {
-            ui->spellList->setRowHidden(i, false);
-        } else {
-            ui->spellList->setRowHidden(i, true);
-        }
-    }
-}
+//void Spellbook::filter_by_class(const CasterClass& cc) {
+//    for (int i = 0; i < spells.size(); i++) {
+//        if (usableByClass(spells[i], cc)) {
+//            ui->spellList->setRowHidden(i, false);
+//        } else {
+//            ui->spellList->setRowHidden(i, true);
+//        }
+//    }
+//}
+
+//void Spellbook::filter_with_favorites(const CasterClass& cc) {
+//    for (int i = 0; i < spells.size(); i++) {
+//        if (usableByClass(spells[i], cc) && spells[i].favorite) {
+//            ui->spellList->setRowHidden(i, false);
+//        } else {
+//            ui->spellList->setRowHidden(i, true);
+//        }
+//    }
+//}
+
+//void Spellbook::filter_favorites() {
+//    for (int i = 0; i < spells.size(); i++) {
+//        if (spells[i].favorite) {
+//            ui->spellList->setRowHidden(i, false);
+//        } else {
+//            ui->spellList->setRowHidden(i, true);
+//        }
+//    }
+//}
 
 void Spellbook::filter() {
     int classIndex = ui->filterBox->currentIndex();
     bool isClass = (classIndex != 0);
-    bool favorites = ui->favoritesButton->isChecked();
-    if (isClass && favorites) {
-        filter_with_favorites(static_cast<CasterClass>(classIndex-1));
-    } else if (isClass) {
-        filter_by_class(static_cast<CasterClass>(classIndex-1));
-    } else if (favorites) {
-        filter_favorites();
+    CasterClass cc;
+    if (isClass) {
+        cc = static_cast<CasterClass>(classIndex-1);
     } else {
-        unfilter();
+        cc = static_cast<CasterClass>(0);
     }
+    bool favorites = ui->favoritesButton->isChecked();
+    std::string searchText = ui->searchBar->text().toStdString();
+    boost::to_lower(searchText);
+    bool isText = (searchText != "");
+    if (!(isText || favorites || isClass) ) {
+        unfilter();
+    } else {
+        for (int i = 0; i < spells.size(); i++) {
+            ui->spellList->setRowHidden(i, filter_item(isClass, favorites, isText, spells[i], cc, searchText));
+        }
+    }
+//    if (isClass && favorites) {
+//        filter_with_favorites(static_cast<CasterClass>(classIndex-1));
+//    } else if (isClass) {
+//        filter_by_class(static_cast<CasterClass>(classIndex-1));
+//    } else if (favorites) {
+//        filter_favorites();
+//    } else {
+//        unfilter();
+//    }
 }
 
 void Spellbook::on_spellList_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn)
@@ -455,4 +486,9 @@ void Spellbook::on_favButton_clicked()
     if (ui->favoritesButton->isChecked()) {
         filter();
     }
+}
+
+void Spellbook::on_searchBar_textEdited(const QString &arg1)
+{
+    filter();
 }

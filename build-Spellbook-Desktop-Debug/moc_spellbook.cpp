@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Spellbook_t {
-    QByteArrayData data[22];
-    char stringdata0[407];
+    QByteArrayData data[23];
+    char stringdata0[431];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -50,7 +50,8 @@ QT_MOC_LITERAL(17, 304, 11), // "previousRow"
 QT_MOC_LITERAL(18, 316, 14), // "previousColumn"
 QT_MOC_LITERAL(19, 331, 26), // "on_favoritesButton_clicked"
 QT_MOC_LITERAL(20, 358, 27), // "on_favoritesButton_released"
-QT_MOC_LITERAL(21, 386, 20) // "on_favButton_clicked"
+QT_MOC_LITERAL(21, 386, 20), // "on_favButton_clicked"
+QT_MOC_LITERAL(22, 407, 23) // "on_searchBar_textEdited"
 
     },
     "Spellbook\0on_spellList_clicked\0\0index\0"
@@ -64,7 +65,7 @@ QT_MOC_LITERAL(21, 386, 20) // "on_favButton_clicked"
     "currentRow\0currentColumn\0previousRow\0"
     "previousColumn\0on_favoritesButton_clicked\0"
     "on_favoritesButton_released\0"
-    "on_favButton_clicked"
+    "on_favButton_clicked\0on_searchBar_textEdited"
 };
 #undef QT_MOC_LITERAL
 
@@ -74,7 +75,7 @@ static const uint qt_meta_data_Spellbook[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -82,18 +83,19 @@ static const uint qt_meta_data_Spellbook[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   74,    2, 0x08 /* Private */,
-       4,    1,   77,    2, 0x08 /* Private */,
-       6,    1,   80,    2, 0x08 /* Private */,
-       7,    2,   83,    2, 0x08 /* Private */,
-      10,    2,   88,    2, 0x08 /* Private */,
-      11,    1,   93,    2, 0x08 /* Private */,
-      12,    1,   96,    2, 0x08 /* Private */,
-      13,    1,   99,    2, 0x08 /* Private */,
-      14,    4,  102,    2, 0x08 /* Private */,
-      19,    0,  111,    2, 0x08 /* Private */,
-      20,    0,  112,    2, 0x08 /* Private */,
-      21,    0,  113,    2, 0x08 /* Private */,
+       1,    1,   79,    2, 0x08 /* Private */,
+       4,    1,   82,    2, 0x08 /* Private */,
+       6,    1,   85,    2, 0x08 /* Private */,
+       7,    2,   88,    2, 0x08 /* Private */,
+      10,    2,   93,    2, 0x08 /* Private */,
+      11,    1,   98,    2, 0x08 /* Private */,
+      12,    1,  101,    2, 0x08 /* Private */,
+      13,    1,  104,    2, 0x08 /* Private */,
+      14,    4,  107,    2, 0x08 /* Private */,
+      19,    0,  116,    2, 0x08 /* Private */,
+      20,    0,  117,    2, 0x08 /* Private */,
+      21,    0,  118,    2, 0x08 /* Private */,
+      22,    1,  119,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QModelIndex,    3,
@@ -108,6 +110,7 @@ static const uint qt_meta_data_Spellbook[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    5,
 
        0        // eod
 };
@@ -130,6 +133,7 @@ void Spellbook::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 9: _t->on_favoritesButton_clicked(); break;
         case 10: _t->on_favoritesButton_released(); break;
         case 11: _t->on_favButton_clicked(); break;
+        case 12: _t->on_searchBar_textEdited((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -160,13 +164,13 @@ int Spellbook::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 13;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 13)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 12;
+        _id -= 13;
     }
     return _id;
 }

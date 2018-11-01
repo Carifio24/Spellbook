@@ -14,7 +14,7 @@ CXX           = i686-w64-mingw32.static-g++
 DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -pipe -fno-keep-inline-dllexport -g -Wall -W -Wextra $(DEFINES)
 CXXFLAGS      = -pipe -fno-keep-inline-dllexport -g -std=gnu++11 -Wall -W -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I. -I../../src/mxe/usr/i686-w64-mingw32.static/qt5/include -I../../src/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I../../src/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I../../src/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -Idebug -I. -I../../src/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++  -I/usr/local/include
+INCPATH       = -I. -I../../src/mxe/usr/i686-w64-mingw32.static/qt5/include -I../../src/mxe/usr/i686-w64-mingw32.static/qt5/include/QtWidgets -I../../src/mxe/usr/i686-w64-mingw32.static/qt5/include/QtGui -I../../src/mxe/usr/i686-w64-mingw32.static/qt5/include/QtCore -Idebug -I. -I../../src/mxe/usr/i686-w64-mingw32.static/qt5/mkspecs/win32-g++ -I/usr/local/include
 LINKER      =        i686-w64-mingw32.static-g++
 LFLAGS        =        -Wl,-subsystem,windows -mthreads
 LIBS        =        -lopengl32 -lmingw32 -L/media/carifio24/E0F86EC1F86E9616/src/mxe/usr/i686-w64-mingw32.static/qt5/lib -lqtmaind -L/media/carifio24/E0F86EC1F86E9616/src/mxe/usr/i686-w64-mingw32.static/qt5/plugins/styles -lqwindowsvistastyled -L/media/carifio24/E0F86EC1F86E9616/src/mxe/usr/i686-w64-mingw32.static/qt5/plugins/platforms -lqwindowsd -L/media/carifio24/E0F86EC1F86E9616/src/mxe/usr/i686-w64-mingw32.static/qt5/plugins/imageformats -lqgifd -lqicod -lqjpegd -lQt5Widgetsd -lQt5Guid -lQt5Cored 

@@ -16,6 +16,7 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
@@ -58,6 +59,7 @@ public:
     QLabel *pageLabel;
     QRadioButton *favoritesButton;
     QPushButton *favButton;
+    QLineEdit *searchBar;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -66,12 +68,12 @@ public:
     {
         if (Spellbook->objectName().isEmpty())
             Spellbook->setObjectName(QStringLiteral("Spellbook"));
-        Spellbook->resize(1225, 821);
+        Spellbook->resize(1225, 891);
         centralWidget = new QWidget(Spellbook);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         spellList = new QTableWidget(centralWidget);
         spellList->setObjectName(QStringLiteral("spellList"));
-        spellList->setGeometry(QRect(50, 110, 431, 641));
+        spellList->setGeometry(QRect(50, 120, 431, 681));
         spellList->setLineWidth(1);
         spellList->setShowGrid(false);
         spellList->setGridStyle(Qt::NoPen);
@@ -83,7 +85,7 @@ public:
         spellList->verticalHeader()->setHighlightSections(false);
         nameLabel = new QLabel(centralWidget);
         nameLabel->setObjectName(QStringLiteral("nameLabel"));
-        nameLabel->setGeometry(QRect(539, 20, 591, 71));
+        nameLabel->setGeometry(QRect(539, 50, 591, 71));
         QFont font;
         font.setFamily(QStringLiteral("URW Chancery L"));
         font.setPointSize(30);
@@ -96,86 +98,91 @@ public:
         nameLabel->setAlignment(Qt::AlignCenter);
         schoolLabel = new QLabel(centralWidget);
         schoolLabel->setObjectName(QStringLiteral("schoolLabel"));
-        schoolLabel->setGeometry(QRect(560, 106, 201, 21));
+        schoolLabel->setGeometry(QRect(560, 136, 201, 21));
         rangeLabel = new QLabel(centralWidget);
         rangeLabel->setObjectName(QStringLiteral("rangeLabel"));
-        rangeLabel->setGeometry(QRect(560, 171, 211, 17));
+        rangeLabel->setGeometry(QRect(560, 201, 211, 17));
         rangeLabel->setTextFormat(Qt::AutoText);
         concentrationLabel = new QLabel(centralWidget);
         concentrationLabel->setObjectName(QStringLiteral("concentrationLabel"));
-        concentrationLabel->setGeometry(QRect(560, 201, 141, 17));
+        concentrationLabel->setGeometry(QRect(560, 231, 141, 17));
         ritualLabel = new QLabel(centralWidget);
         ritualLabel->setObjectName(QStringLiteral("ritualLabel"));
-        ritualLabel->setGeometry(QRect(800, 198, 171, 20));
+        ritualLabel->setGeometry(QRect(800, 228, 171, 20));
         durationLabel = new QLabel(centralWidget);
         durationLabel->setObjectName(QStringLiteral("durationLabel"));
-        durationLabel->setGeometry(QRect(560, 231, 281, 17));
+        durationLabel->setGeometry(QRect(560, 261, 281, 17));
         componentsLabel = new QLabel(centralWidget);
         componentsLabel->setObjectName(QStringLiteral("componentsLabel"));
-        componentsLabel->setGeometry(QRect(560, 261, 181, 16));
+        componentsLabel->setGeometry(QRect(560, 291, 181, 16));
         materialLabel = new QLabel(centralWidget);
         materialLabel->setObjectName(QStringLiteral("materialLabel"));
-        materialLabel->setGeometry(QRect(560, 291, 641, 51));
+        materialLabel->setGeometry(QRect(560, 321, 641, 51));
         materialLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         materialLabel->setWordWrap(true);
         levelLabel = new QLabel(centralWidget);
         levelLabel->setObjectName(QStringLiteral("levelLabel"));
-        levelLabel->setGeometry(QRect(790, 107, 121, 20));
+        levelLabel->setGeometry(QRect(790, 137, 121, 20));
         descriptionLabel = new QLabel(centralWidget);
         descriptionLabel->setObjectName(QStringLiteral("descriptionLabel"));
-        descriptionLabel->setGeometry(QRect(560, 441, 591, 301));
+        descriptionLabel->setGeometry(QRect(560, 471, 591, 301));
         descriptionLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         descriptionLabel->setWordWrap(true);
         sort1Box = new QComboBox(centralWidget);
         sort1Box->setObjectName(QStringLiteral("sort1Box"));
-        sort1Box->setGeometry(QRect(60, 50, 111, 25));
+        sort1Box->setGeometry(QRect(60, 60, 111, 25));
         sort1Label = new QLabel(centralWidget);
         sort1Label->setObjectName(QStringLiteral("sort1Label"));
-        sort1Label->setGeometry(QRect(60, 20, 81, 17));
+        sort1Label->setGeometry(QRect(60, 30, 81, 17));
         sort2Box = new QComboBox(centralWidget);
         sort2Box->setObjectName(QStringLiteral("sort2Box"));
-        sort2Box->setGeometry(QRect(210, 50, 111, 25));
+        sort2Box->setGeometry(QRect(210, 60, 111, 25));
         sort2Label = new QLabel(centralWidget);
         sort2Label->setObjectName(QStringLiteral("sort2Label"));
-        sort2Label->setGeometry(QRect(220, 20, 81, 17));
+        sort2Label->setGeometry(QRect(220, 30, 81, 17));
         classesLabel = new QLabel(centralWidget);
         classesLabel->setObjectName(QStringLiteral("classesLabel"));
-        classesLabel->setGeometry(QRect(560, 351, 451, 17));
+        classesLabel->setGeometry(QRect(560, 381, 451, 17));
         subclassesLabel = new QLabel(centralWidget);
         subclassesLabel->setObjectName(QStringLiteral("subclassesLabel"));
-        subclassesLabel->setGeometry(QRect(560, 381, 451, 17));
+        subclassesLabel->setGeometry(QRect(560, 411, 451, 17));
         filterLabel = new QLabel(centralWidget);
         filterLabel->setObjectName(QStringLiteral("filterLabel"));
-        filterLabel->setGeometry(QRect(370, 20, 101, 17));
+        filterLabel->setGeometry(QRect(370, 30, 101, 17));
         filterBox = new QComboBox(centralWidget);
         filterBox->setObjectName(QStringLiteral("filterBox"));
-        filterBox->setGeometry(QRect(370, 50, 101, 25));
+        filterBox->setGeometry(QRect(370, 60, 101, 25));
         descScrollArea = new QScrollArea(centralWidget);
         descScrollArea->setObjectName(QStringLiteral("descScrollArea"));
-        descScrollArea->setGeometry(QRect(560, 441, 591, 301));
+        descScrollArea->setGeometry(QRect(560, 471, 591, 351));
         descScrollArea->setFrameShape(QFrame::NoFrame);
         descScrollArea->setLineWidth(0);
         descScrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 591, 301));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 591, 351));
         descScrollArea->setWidget(scrollAreaWidgetContents);
         descriptionTitle = new QLabel(centralWidget);
         descriptionTitle->setObjectName(QStringLiteral("descriptionTitle"));
-        descriptionTitle->setGeometry(QRect(560, 411, 111, 20));
+        descriptionTitle->setGeometry(QRect(560, 441, 111, 20));
         castingTimeLabel = new QLabel(centralWidget);
         castingTimeLabel->setObjectName(QStringLiteral("castingTimeLabel"));
-        castingTimeLabel->setGeometry(QRect(560, 140, 241, 21));
+        castingTimeLabel->setGeometry(QRect(560, 170, 241, 21));
         pageLabel = new QLabel(centralWidget);
         pageLabel->setObjectName(QStringLiteral("pageLabel"));
-        pageLabel->setGeometry(QRect(990, 110, 171, 17));
+        pageLabel->setGeometry(QRect(990, 140, 171, 17));
         favoritesButton = new QRadioButton(centralWidget);
         favoritesButton->setObjectName(QStringLiteral("favoritesButton"));
-        favoritesButton->setGeometry(QRect(60, 80, 112, 23));
+        favoritesButton->setGeometry(QRect(60, 90, 112, 23));
         favButton = new QPushButton(centralWidget);
         favButton->setObjectName(QStringLiteral("favButton"));
-        favButton->setGeometry(QRect(1140, 20, 71, 71));
+        favButton->setGeometry(QRect(1140, 50, 71, 71));
         favButton->setFocusPolicy(Qt::NoFocus);
+        searchBar = new QLineEdit(centralWidget);
+        searchBar->setObjectName(QStringLiteral("searchBar"));
+        searchBar->setGeometry(QRect(50, 810, 431, 25));
+        searchBar->setFocusPolicy(Qt::ClickFocus);
+        searchBar->setAutoFillBackground(true);
         Spellbook->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Spellbook);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -216,6 +223,7 @@ public:
         pageLabel->setText(QString());
         favoritesButton->setText(QApplication::translate("Spellbook", "Favorites", 0));
         favButton->setText(QString());
+        searchBar->setText(QString());
     } // retranslateUi
 
 };

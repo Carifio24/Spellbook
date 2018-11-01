@@ -45,6 +45,8 @@ private slots:
 
     void on_favButton_clicked();
 
+    void on_searchBar_textEdited(const QString &arg1);
+
 private:
 
     void filter_by_class(const CasterClass& cc);
@@ -62,6 +64,8 @@ private:
     void unfilter();
 
     void update_button();
+
+    bool filter_item(const bool& isClass, const bool& isFav, const bool& isText, const Spell& s, const CasterClass& cc, const std::string& text);
 
     Ui::Spellbook *ui;
     std::vector<Spell> spells;
