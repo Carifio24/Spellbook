@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1225</width>
-    <height>891</height>
+    <height>852</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>50</x>
       <y>120</y>
       <width>431</width>
-      <height>681</height>
+      <height>671</height>
      </rect>
     </property>
     <property name="lineWidth">
@@ -313,7 +313,7 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
       <x>560</x>
       <y>471</y>
       <width>591</width>
-      <height>351</height>
+      <height>321</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -331,7 +331,7 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
        <x>0</x>
        <y>0</y>
        <width>591</width>
-       <height>351</height>
+       <height>321</height>
       </rect>
      </property>
     </widget>
@@ -407,9 +407,9 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
    <widget class="QLineEdit" name="searchBar">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>810</y>
-      <width>431</width>
+      <x>170</x>
+      <y>90</y>
+      <width>311</width>
       <height>25</height>
      </rect>
     </property>
@@ -421,6 +421,9 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="placeholderText">
+     <string>Search</string>
     </property>
    </widget>
   </widget>

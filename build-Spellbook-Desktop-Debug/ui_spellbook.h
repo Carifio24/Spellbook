@@ -68,12 +68,12 @@ public:
     {
         if (Spellbook->objectName().isEmpty())
             Spellbook->setObjectName(QStringLiteral("Spellbook"));
-        Spellbook->resize(1225, 891);
+        Spellbook->resize(1225, 852);
         centralWidget = new QWidget(Spellbook);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         spellList = new QTableWidget(centralWidget);
         spellList->setObjectName(QStringLiteral("spellList"));
-        spellList->setGeometry(QRect(50, 120, 431, 681));
+        spellList->setGeometry(QRect(50, 120, 431, 671));
         spellList->setLineWidth(1);
         spellList->setShowGrid(false);
         spellList->setGridStyle(Qt::NoPen);
@@ -154,13 +154,13 @@ public:
         filterBox->setGeometry(QRect(370, 60, 101, 25));
         descScrollArea = new QScrollArea(centralWidget);
         descScrollArea->setObjectName(QStringLiteral("descScrollArea"));
-        descScrollArea->setGeometry(QRect(560, 471, 591, 351));
+        descScrollArea->setGeometry(QRect(560, 471, 591, 321));
         descScrollArea->setFrameShape(QFrame::NoFrame);
         descScrollArea->setLineWidth(0);
         descScrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 591, 351));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 591, 321));
         descScrollArea->setWidget(scrollAreaWidgetContents);
         descriptionTitle = new QLabel(centralWidget);
         descriptionTitle->setObjectName(QStringLiteral("descriptionTitle"));
@@ -180,7 +180,7 @@ public:
         favButton->setFocusPolicy(Qt::NoFocus);
         searchBar = new QLineEdit(centralWidget);
         searchBar->setObjectName(QStringLiteral("searchBar"));
-        searchBar->setGeometry(QRect(50, 810, 431, 25));
+        searchBar->setGeometry(QRect(170, 90, 311, 25));
         searchBar->setFocusPolicy(Qt::ClickFocus);
         searchBar->setAutoFillBackground(true);
         Spellbook->setCentralWidget(centralWidget);
@@ -224,6 +224,7 @@ public:
         favoritesButton->setText(QApplication::translate("Spellbook", "Favorites", 0));
         favButton->setText(QString());
         searchBar->setText(QString());
+        searchBar->setPlaceholderText(QApplication::translate("Spellbook", "Search", 0));
     } // retranslateUi
 
 };

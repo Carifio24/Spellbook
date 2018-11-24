@@ -5280,6 +5280,7 @@
 		"name": "Find Familiar",
 		"page": "phb 240",
 		"level": 1,
+		"casting_time": "1 hour",
 		"school": {
 			"name": "Conjuration"
 		},
@@ -5289,6 +5290,7 @@
 			}
 		],
 		"ritual": "yes",
+		"range": "10 feet",
 		"components": [
 			"V",
 			"S",

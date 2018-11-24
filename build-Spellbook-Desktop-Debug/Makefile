@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = Spellbook1.0.0
-DISTDIR = /media/carifio24/E0F86EC1F86E9616/git/Spellbook/build-Spellbook-Desktop-Debug/.tmp/Spellbook1.0.0
+DISTDIR = /home/jon/git/Spellbook/build-Spellbook-Desktop-Debug/.tmp/Spellbook1.0.0
 LINK          = g++
 LFLAGS        = -m64
 LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -353,7 +353,7 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_spellbook.cpp
 moc_spellbook.cpp: ../Classes.h \
 		../spellbook.h
-	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/media/carifio24/E0F86EC1F86E9616/git/Spellbook -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../spellbook.h -o moc_spellbook.cpp
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/jon/git/Spellbook -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../spellbook.h -o moc_spellbook.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -379,7 +379,7 @@ main.o: ../main.cpp ../spellbook.h \
 
 spellbook.o: ../spellbook.cpp ../spellbook.h \
 		../Classes.h \
-		ui_spellbook.h \
+		../../../Spellbook/ui_spellbook.h \
 		../Parse.h \
 		../jsoncpp/json/json.h \
 		../Parse.tpp \
