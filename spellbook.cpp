@@ -350,7 +350,7 @@ bool Spellbook::filter_item(const bool& isClass, const bool& isFav, const bool& 
     boost::to_lower(spname);
     toHide = toHide || (isClass && !usableByClass(s, cc));
     toHide = toHide || (isFav && !s.favorite);
-    toHide = toHide || (isText && !boost::starts_with(spname, text));
+    toHide = toHide || (isText && !boost::contains(spname, text));
     return toHide;
 }
 
