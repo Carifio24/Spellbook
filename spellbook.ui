@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>120</y>
+      <y>140</y>
       <width>431</width>
-      <height>671</height>
+      <height>661</height>
      </rect>
     </property>
     <property name="lineWidth">
@@ -426,6 +426,69 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
      <string>Search</string>
     </property>
    </widget>
+   <widget class="QCheckBox" name="phbCheckbox">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>120</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::DefaultContextMenu</enum>
+    </property>
+    <property name="text">
+     <string>Players' Handbook</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="xgeCheckbox">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>120</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="text">
+     <string>Xanathar's GTE</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="scagCheckbox">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>120</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="mouseTracking">
+     <bool>false</bool>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
+    <property name="text">
+     <string>Sword Coast AG</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -433,7 +496,7 @@ font: 57 italic 30pt &quot;URW Chancery L&quot;;</string>
      <x>0</x>
      <y>0</y>
      <width>1225</width>
-     <height>22</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>

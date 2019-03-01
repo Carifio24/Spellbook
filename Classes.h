@@ -17,6 +17,10 @@ enum class Subclass {
 	Land=0, Lore, Draconic, Hunter, Life, Devotion, Berserker, Evocation, Fiend, Thief, OpenHand
 };
 
+enum class Sourcebook {
+    PlayersHandbook=0, XanatharsGTE, SwordCoastAG
+};
+
 struct Spell {
 	int index;
 	std::string name;
@@ -33,6 +37,7 @@ struct Spell {
 	int level;
     bool favorite;
 	School school;
+    Sourcebook sourcebook;
 	std::vector<CasterClass> classes;
 	std::vector<Subclass> subclasses;
 };

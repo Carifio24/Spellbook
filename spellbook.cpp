@@ -89,6 +89,9 @@ Spellbook::Spellbook(QWidget *parent) :
     // Put the description label inside the scroll area
     ui->descScrollArea->setWidget(ui->descriptionLabel);
 
+    // The checkboxes for the sourcebooks
+    sourcebookCheckboxes = { ui->phbCheckbox, ui->xgeCheckbox, ui->scagCheckbox };
+
     // Font settings
     QString fontstyle = QString::fromStdString("font-weight: 750");
     ui->sort1Label->setStyleSheet(fontstyle);
@@ -144,7 +147,8 @@ void Spellbook::display_spelldata(const int& ind) {
     QString descriptionText = QString::fromStdString(spell.description + "\n\n" + spell.higherLevel);
     QString durationText = "<b>Duration: </b>" + QString::fromStdString(spell.duration);
     QString castingTimeText = "<b>Casting Time: </b>" + QString::fromStdString(spell.castingTime);
-    QString pageText = "<b>Location: </b> PHB " + QString::fromStdString(std::to_string(spell.page));
+    std::string locationText = sourcebookCodes[(int)spell.sourcebook] + " " + std::to_string(spell.page);
+    QString pageText = "<b>Location: </b> " + QString::fromStdString(locationText);
     std::string compStr = "";
     if (spell.components[0]) {
         compStr += "V";
@@ -345,45 +349,18 @@ void Spellbook::on_filterBox_currentIndexChanged(int index)
 }
 
 bool Spellbook::filter_item(const bool& isClass, const bool& isFav, const bool& isText, const Spell& s, const CasterClass& cc, const std::string& text) {
+   if (sourcebookCheckboxes.size() == 0) {
+       sourcebookCheckboxes = { ui->phbCheckbox, ui->xgeCheckbox, ui->scagCheckbox };
+   }
     bool toHide = false;
     std::string spname = s.name;
     boost::to_lower(spname);
     toHide = toHide || (isClass && !usableByClass(s, cc));
     toHide = toHide || (isFav && !s.favorite);
     toHide = toHide || (isText && !boost::contains(spname, text));
+    toHide = toHide || ( !sourcebookCheckboxes[(int)s.sourcebook]->isChecked() );
     return toHide;
 }
-
-
-//void Spellbook::filter_by_class(const CasterClass& cc) {
-//    for (int i = 0; i < spells.size(); i++) {
-//        if (usableByClass(spells[i], cc)) {
-//            ui->spellList->setRowHidden(i, false);
-//        } else {
-//            ui->spellList->setRowHidden(i, true);
-//        }
-//    }
-//}
-
-//void Spellbook::filter_with_favorites(const CasterClass& cc) {
-//    for (int i = 0; i < spells.size(); i++) {
-//        if (usableByClass(spells[i], cc) && spells[i].favorite) {
-//            ui->spellList->setRowHidden(i, false);
-//        } else {
-//            ui->spellList->setRowHidden(i, true);
-//        }
-//    }
-//}
-
-//void Spellbook::filter_favorites() {
-//    for (int i = 0; i < spells.size(); i++) {
-//        if (spells[i].favorite) {
-//            ui->spellList->setRowHidden(i, false);
-//        } else {
-//            ui->spellList->setRowHidden(i, true);
-//        }
-//    }
-//}
 
 void Spellbook::filter() {
     int classIndex = ui->filterBox->currentIndex();
@@ -398,22 +375,14 @@ void Spellbook::filter() {
     std::string searchText = ui->searchBar->text().toStdString();
     boost::to_lower(searchText);
     bool isText = (searchText != "");
-    if (!(isText || favorites || isClass) ) {
-        unfilter();
-    } else {
+//    if (!(isText || favorites || isClass) ) {
+//        unfilter();
+//    } else {
         for (int i = 0; i < spells.size(); i++) {
             ui->spellList->setRowHidden(i, filter_item(isClass, favorites, isText, spells[i], cc, searchText));
         }
-    }
-//    if (isClass && favorites) {
-//        filter_with_favorites(static_cast<CasterClass>(classIndex-1));
-//    } else if (isClass) {
-//        filter_by_class(static_cast<CasterClass>(classIndex-1));
-//    } else if (favorites) {
-//        filter_favorites();
-//    } else {
-//        unfilter();
-//    }
+    //}
+
 }
 
 void Spellbook::on_spellList_currentCellChanged(int currentRow, int currentColumn, int previousRow, int previousColumn)
@@ -489,6 +458,21 @@ void Spellbook::on_favButton_clicked()
 }
 
 void Spellbook::on_searchBar_textEdited(const QString &arg1)
+{
+    filter();
+}
+
+void Spellbook::on_phbCheckbox_toggled(bool checked)
+{
+    filter();
+}
+
+void Spellbook::on_xgeCheckbox_toggled(bool checked)
+{
+    filter();
+}
+
+void Spellbook::on_scagCheckbox_toggled(bool checked)
 {
     filter();
 }

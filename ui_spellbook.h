@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'spellbook.ui'
 **
-** Created by: Qt User Interface Compiler version 5.11.2
+** Created by: Qt User Interface Compiler version 5.5.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -10,7 +10,10 @@
 #define UI_SPELLBOOK_H
 
 #include <QtCore/QVariant>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -58,6 +61,9 @@ public:
     QRadioButton *favoritesButton;
     QPushButton *favButton;
     QLineEdit *searchBar;
+    QCheckBox *phbCheckbox;
+    QCheckBox *xgeCheckbox;
+    QCheckBox *scagCheckbox;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -71,7 +77,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         spellList = new QTableWidget(centralWidget);
         spellList->setObjectName(QStringLiteral("spellList"));
-        spellList->setGeometry(QRect(50, 120, 431, 671));
+        spellList->setGeometry(QRect(50, 140, 431, 661));
         spellList->setLineWidth(1);
         spellList->setShowGrid(false);
         spellList->setGridStyle(Qt::NoPen);
@@ -181,10 +187,27 @@ public:
         searchBar->setGeometry(QRect(170, 90, 311, 25));
         searchBar->setFocusPolicy(Qt::ClickFocus);
         searchBar->setAutoFillBackground(true);
+        phbCheckbox = new QCheckBox(centralWidget);
+        phbCheckbox->setObjectName(QStringLiteral("phbCheckbox"));
+        phbCheckbox->setGeometry(QRect(60, 120, 141, 20));
+        phbCheckbox->setMouseTracking(false);
+        phbCheckbox->setFocusPolicy(Qt::ClickFocus);
+        phbCheckbox->setContextMenuPolicy(Qt::DefaultContextMenu);
+        phbCheckbox->setChecked(true);
+        xgeCheckbox = new QCheckBox(centralWidget);
+        xgeCheckbox->setObjectName(QStringLiteral("xgeCheckbox"));
+        xgeCheckbox->setGeometry(QRect(210, 120, 121, 20));
+        xgeCheckbox->setMouseTracking(false);
+        xgeCheckbox->setFocusPolicy(Qt::ClickFocus);
+        scagCheckbox = new QCheckBox(centralWidget);
+        scagCheckbox->setObjectName(QStringLiteral("scagCheckbox"));
+        scagCheckbox->setGeometry(QRect(350, 120, 121, 20));
+        scagCheckbox->setMouseTracking(false);
+        scagCheckbox->setFocusPolicy(Qt::ClickFocus);
         Spellbook->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(Spellbook);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1225, 22));
+        menuBar->setGeometry(QRect(0, 0, 1225, 19));
         Spellbook->setMenuBar(menuBar);
         mainToolBar = new QToolBar(Spellbook);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -200,7 +223,7 @@ public:
 
     void retranslateUi(QMainWindow *Spellbook)
     {
-        Spellbook->setWindowTitle(QApplication::translate("Spellbook", "Spellbook", nullptr));
+        Spellbook->setWindowTitle(QApplication::translate("Spellbook", "Spellbook", 0));
         nameLabel->setText(QString());
         schoolLabel->setText(QString());
         rangeLabel->setText(QString());
@@ -211,18 +234,21 @@ public:
         materialLabel->setText(QString());
         levelLabel->setText(QString());
         descriptionLabel->setText(QString());
-        sort1Label->setText(QApplication::translate("Spellbook", "Sort field 1", nullptr));
-        sort2Label->setText(QApplication::translate("Spellbook", "Sort field 2", nullptr));
+        sort1Label->setText(QApplication::translate("Spellbook", "Sort field 1", 0));
+        sort2Label->setText(QApplication::translate("Spellbook", "Sort field 2", 0));
         classesLabel->setText(QString());
         subclassesLabel->setText(QString());
-        filterLabel->setText(QApplication::translate("Spellbook", "Filter by class", nullptr));
+        filterLabel->setText(QApplication::translate("Spellbook", "Filter by class", 0));
         descriptionTitle->setText(QString());
         castingTimeLabel->setText(QString());
         pageLabel->setText(QString());
-        favoritesButton->setText(QApplication::translate("Spellbook", "Favorites", nullptr));
+        favoritesButton->setText(QApplication::translate("Spellbook", "Favorites", 0));
         favButton->setText(QString());
         searchBar->setText(QString());
-        searchBar->setPlaceholderText(QApplication::translate("Spellbook", "Search", nullptr));
+        searchBar->setPlaceholderText(QApplication::translate("Spellbook", "Search", 0));
+        phbCheckbox->setText(QApplication::translate("Spellbook", "Players' Handbook", 0));
+        xgeCheckbox->setText(QApplication::translate("Spellbook", "Xanathar's GTE", 0));
+        scagCheckbox->setText(QApplication::translate("Spellbook", "Sword Coast AG", 0));
     } // retranslateUi
 
 };

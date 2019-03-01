@@ -15,11 +15,17 @@ extern const std::vector<std::string> casterNames;
 
 extern const std::vector<std::string> subclassNames;
 
+extern const std::vector<std::string> sourcebookNames;
+
+extern const std::vector<std::string> sourcebookCodes;
+
 extern const int N_SCHOOLS;
 
 extern const int N_CASTERS;
 
 extern const int N_SUBCLASSES;
+
+extern const int N_SOURCES;
 
 bool yn_to_bool(const std::string& yn);
 

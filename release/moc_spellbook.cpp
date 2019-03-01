@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'spellbook.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.11.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.11.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'spellbook.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.11.2. It"
+#error "This file was generated using the moc from 5.11.1. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Spellbook_t {
-    QByteArrayData data[24];
-    char stringdata0[443];
+    QByteArrayData data[28];
+    char stringdata0[521];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -54,7 +54,11 @@ QT_MOC_LITERAL(19, 328, 14), // "previousColumn"
 QT_MOC_LITERAL(20, 343, 26), // "on_favoritesButton_clicked"
 QT_MOC_LITERAL(21, 370, 27), // "on_favoritesButton_released"
 QT_MOC_LITERAL(22, 398, 20), // "on_favButton_clicked"
-QT_MOC_LITERAL(23, 419, 23) // "on_searchBar_textEdited"
+QT_MOC_LITERAL(23, 419, 23), // "on_searchBar_textEdited"
+QT_MOC_LITERAL(24, 443, 22), // "on_phbCheckbox_toggled"
+QT_MOC_LITERAL(25, 466, 7), // "checked"
+QT_MOC_LITERAL(26, 474, 22), // "on_xgeCheckbox_toggled"
+QT_MOC_LITERAL(27, 497, 23) // "on_scagCheckbox_toggled"
 
     },
     "Spellbook\0on_spellList_clicked\0\0"
@@ -68,7 +72,9 @@ QT_MOC_LITERAL(23, 419, 23) // "on_searchBar_textEdited"
     "currentRow\0currentColumn\0previousRow\0"
     "previousColumn\0on_favoritesButton_clicked\0"
     "on_favoritesButton_released\0"
-    "on_favButton_clicked\0on_searchBar_textEdited"
+    "on_favButton_clicked\0on_searchBar_textEdited\0"
+    "on_phbCheckbox_toggled\0checked\0"
+    "on_xgeCheckbox_toggled\0on_scagCheckbox_toggled"
 };
 #undef QT_MOC_LITERAL
 
@@ -78,7 +84,7 @@ static const uint qt_meta_data_Spellbook[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -86,19 +92,22 @@ static const uint qt_meta_data_Spellbook[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,   79,    2, 0x08 /* Private */,
-       5,    1,   82,    2, 0x08 /* Private */,
-       7,    1,   85,    2, 0x08 /* Private */,
-       8,    2,   88,    2, 0x08 /* Private */,
-      11,    2,   93,    2, 0x08 /* Private */,
-      12,    1,   98,    2, 0x08 /* Private */,
-      13,    1,  101,    2, 0x08 /* Private */,
-      14,    1,  104,    2, 0x08 /* Private */,
-      15,    4,  107,    2, 0x08 /* Private */,
-      20,    0,  116,    2, 0x08 /* Private */,
-      21,    0,  117,    2, 0x08 /* Private */,
-      22,    0,  118,    2, 0x08 /* Private */,
-      23,    1,  119,    2, 0x08 /* Private */,
+       1,    1,   94,    2, 0x08 /* Private */,
+       5,    1,   97,    2, 0x08 /* Private */,
+       7,    1,  100,    2, 0x08 /* Private */,
+       8,    2,  103,    2, 0x08 /* Private */,
+      11,    2,  108,    2, 0x08 /* Private */,
+      12,    1,  113,    2, 0x08 /* Private */,
+      13,    1,  116,    2, 0x08 /* Private */,
+      14,    1,  119,    2, 0x08 /* Private */,
+      15,    4,  122,    2, 0x08 /* Private */,
+      20,    0,  131,    2, 0x08 /* Private */,
+      21,    0,  132,    2, 0x08 /* Private */,
+      22,    0,  133,    2, 0x08 /* Private */,
+      23,    1,  134,    2, 0x08 /* Private */,
+      24,    1,  137,    2, 0x08 /* Private */,
+      26,    1,  140,    2, 0x08 /* Private */,
+      27,    1,  143,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
@@ -114,6 +123,9 @@ static const uint qt_meta_data_Spellbook[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    6,
+    QMetaType::Void, QMetaType::Bool,   25,
+    QMetaType::Void, QMetaType::Bool,   25,
+    QMetaType::Void, QMetaType::Bool,   25,
 
        0        // eod
 };
@@ -137,6 +149,9 @@ void Spellbook::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 10: _t->on_favoritesButton_released(); break;
         case 11: _t->on_favButton_clicked(); break;
         case 12: _t->on_searchBar_textEdited((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 13: _t->on_phbCheckbox_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 14: _t->on_xgeCheckbox_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 15: _t->on_scagCheckbox_toggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -167,13 +182,13 @@ int Spellbook::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 16;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 16)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 13;
+        _id -= 16;
     }
     return _id;
 }
